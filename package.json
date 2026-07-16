@@ -7,7 +7,13 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && powershell -ExecutionPolicy Bypass -File scripts/ftp-deploy.ps1"
+    "assets": "powershell -ExecutionPolicy Bypass -File scripts/download-assets.ps1",
+    "deploy": "vercel --prod",
+    "deploy:preview": "vercel",
+    "deploy:spaceship": "npm run build && powershell -ExecutionPolicy Bypass -File scripts/ftp-deploy.ps1"
+  },
+  "engines": {
+    "node": ">=18"
   },
   "dependencies": {
     "framer-motion": "^11.18.2",
@@ -20,6 +26,7 @@
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
+    "vercel": "^54.14.2",
     "vite": "^6.0.5"
   }
 }

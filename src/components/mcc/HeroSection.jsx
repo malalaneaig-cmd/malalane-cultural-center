@@ -2,6 +2,7 @@ import React from 'react';
 import { useLang } from './LanguageContext';
 import { motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { images } from '../../config/assets';
 
 export default function HeroSection() {
   const { lang } = useLang();
@@ -10,8 +11,9 @@ export default function HeroSection() {
     <section className="relative overflow-hidden flex flex-col justify-start" style={{ minHeight: '140vh' }}>
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=80"
+          src={images.hero}
           alt="Mozambique landscape"
+          loading="eager"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/10 to-transparent" />

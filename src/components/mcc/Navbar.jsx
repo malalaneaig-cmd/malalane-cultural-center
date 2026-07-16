@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLang } from './LanguageContext';
 import { Menu, X, Globe } from 'lucide-react';
+import { images } from '../../config/assets';
 
 const navItems = {
   en: ['Who We Are', 'Mission', 'Vision', 'What We Do', 'Donate', 'Media', 'Get Involved'],
@@ -12,12 +13,6 @@ const sectionIds = ['who-we-are', 'mission', 'vision', 'what-we-do', 'donate', '
 export default function Navbar() {
   const { lang, toggle } = useLang();
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => {};
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
-  }, []);
 
   const scrollTo = (id) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -36,7 +31,7 @@ export default function Navbar() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img
-              src="https://media.base44.com/images/public/69a93b29a4a5a09a87751ceb/cef442afb_image.png"
+              src={images.logo}
               alt="Malalane Cultural Center Logo"
               className="h-12 lg:h-16 w-auto object-contain"
               style={{ mixBlendMode: 'multiply', filter: 'brightness(0.75) contrast(1.8) saturate(1.6)' }}

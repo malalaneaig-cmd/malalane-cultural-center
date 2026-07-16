@@ -2,6 +2,7 @@ import React from 'react';
 import { useLang } from './LanguageContext';
 import { motion } from 'framer-motion';
 import { Eye } from 'lucide-react';
+import { images } from '../../config/assets';
 
 const content = {
   en: {
@@ -29,8 +30,9 @@ export default function VisionSection() {
             transition={{ duration: 0.8 }}
           >
             <img
-              src="https://images.unsplash.com/photo-1760873059715-7c7cfbe2a2c6?w=800&q=80"
+              src={images.vision}
               alt="Children at a village water pump, East Africa"
+              loading="lazy"
               className="w-full h-80 object-cover rounded-2xl shadow-xl"
             />
           </motion.div>

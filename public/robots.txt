@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://malalane.org/sitemap.xml

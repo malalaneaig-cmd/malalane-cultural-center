@@ -2,6 +2,7 @@ import React from 'react';
 import { useLang } from './LanguageContext';
 import { motion } from 'framer-motion';
 import { Target } from 'lucide-react';
+import { images } from '../../config/assets';
 
 const content = {
   en: {
@@ -32,8 +33,9 @@ export default function MissionSection() {
             transition={{ duration: 0.8 }}
           >
             <img
-              src="https://images.unsplash.com/photo-1761666520005-3ffcf13e74c8?w=800&q=80"
+              src={images.mission}
               alt="African community members in discussion"
+              loading="lazy"
               className="w-full h-80 object-cover rounded-2xl shadow-xl"
             />
           </motion.div>

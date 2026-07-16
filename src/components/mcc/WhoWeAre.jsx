@@ -2,6 +2,7 @@ import React from 'react';
 import { useLang } from './LanguageContext';
 import { motion } from 'framer-motion';
 import { Users } from 'lucide-react';
+import { images } from '../../config/assets';
 
 const content = {
   en: {
@@ -57,18 +58,21 @@ export default function WhoWeAre() {
           className="mt-16 grid grid-cols-3 gap-3 sm:gap-4 rounded-2xl overflow-hidden"
         >
           <img
-            src="https://media.base44.com/images/public/69a93b29a4a5a09a87751ceb/ade06ae17_image.png"
+            src={images.communityGathering}
             alt="African community gathering"
+            loading="lazy"
             className="w-full h-40 sm:h-56 object-cover rounded-xl"
           />
           <img
-            src="https://images.unsplash.com/photo-1515657834497-26509e295154?w=600&q=80"
+            src={images.culturalCelebration}
             alt="Cultural celebration"
+            loading="lazy"
             className="w-full h-40 sm:h-56 object-cover rounded-xl"
           />
           <img
-            src="https://images.unsplash.com/photo-1710093072218-0024b8391475?w=600&q=80"
+            src={images.communityOutreach}
             alt="Community outreach"
+            loading="lazy"
             className="w-full h-40 sm:h-56 object-cover rounded-xl"
           />
         </motion.div>
