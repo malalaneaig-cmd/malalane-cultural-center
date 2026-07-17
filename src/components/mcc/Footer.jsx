@@ -5,21 +5,21 @@ const content = {
   en: {
     contact: 'Contact',
     privacy: 'Privacy Policy',
-    terms: 'Terms of Service',
+    terms: 'Terms of Use',
     rights: 'All rights reserved.',
     navLabel: 'Footer navigation',
   },
   pt: {
     contact: 'Contacto',
     privacy: 'Política de Privacidade',
-    terms: 'Termos de Serviço',
+    terms: 'Termos de Utilização',
     rights: 'Todos os direitos reservados.',
     navLabel: 'Navegação do rodapé',
   },
 };
 
 const links = [
-  { key: 'contact', href: '#get-involved', scroll: true },
+  { key: 'contact', href: 'mailto:info@malalane.org' },
   { key: 'privacy', href: '/privacy.html' },
   { key: 'terms', href: '/terms.html' },
 ];
@@ -27,10 +27,6 @@ const links = [
 export default function Footer() {
   const { lang } = useLang();
   const c = content[lang];
-
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   const linkClass =
     'text-[#FDF8F0]/85 hover:text-[#FDF8F0] text-sm font-medium transition-colors duration-200';
@@ -58,22 +54,11 @@ export default function Footer() {
               aria-label={c.navLabel}
               className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 sm:gap-x-8 sm:gap-y-2"
             >
-              {links.map(({ key, href, scroll }) =>
-                scroll ? (
-                  <button
-                    key={key}
-                    type="button"
-                    onClick={() => scrollTo('get-involved')}
-                    className={`${linkClass} text-left`}
-                  >
-                    {c[key]}
-                  </button>
-                ) : (
-                  <a key={key} href={href} className={linkClass}>
-                    {c[key]}
-                  </a>
-                )
-              )}
+              {links.map(({ key, href }) => (
+                <a key={key} href={href} className={linkClass}>
+                  {c[key]}
+                </a>
+              ))}
             </nav>
             <p className="text-[#FDF8F0]/60 text-xs leading-tight">
               © {new Date().getFullYear()} Malalane Cultural Center. {c.rights}
