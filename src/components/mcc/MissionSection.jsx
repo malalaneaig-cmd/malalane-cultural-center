@@ -20,9 +20,9 @@ export default function MissionSection() {
   const c = content[lang];
 
   return (
-    <section id="mission" className="py-24 sm:py-32 bg-[#1A1A2E] relative overflow-hidden">
-      <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-[#C05621]/5" />
-      <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-[#D4A843]/5" />
+    <section id="mission" className="py-24 sm:py-32 bg-[#D2BC9A] relative overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/15" />
+      <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-[#C05621]/10" />
 
       <div className="max-w-5xl mx-auto px-6 relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -46,14 +46,14 @@ export default function MissionSection() {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#C05621]/15 mb-6">
+            <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#1A1A2E]/10 mb-6">
               <Target className="w-7 h-7 text-[#C05621]" />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#FDF8F0] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#1A1A2E] tracking-tight">
               {c.title}
             </h2>
-            <div className="mt-4 w-16 h-1 bg-gradient-to-r from-[#C05621] to-[#D4A843] rounded-full" />
-            <p className="mt-8 text-lg leading-relaxed text-[#FDF8F0]/70">
+            <div className="mt-4 w-16 h-1 bg-gradient-to-r from-[#C05621] to-[#8B6914] rounded-full" />
+            <p className="mt-8 text-lg leading-relaxed text-[#1A1A2E]/80">
               {c.text}
             </p>
           </motion.div>

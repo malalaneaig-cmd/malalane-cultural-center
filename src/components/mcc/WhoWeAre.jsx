@@ -20,8 +20,11 @@ export default function WhoWeAre() {
   const c = content[lang];
 
   return (
-    <section id="who-we-are" className="py-24 sm:py-32 bg-[#FDF8F0]">
-      <div className="max-w-5xl mx-auto px-6">
+    <section id="who-we-are" className="py-24 sm:py-32 bg-[#EDAB78] relative overflow-hidden">
+      <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-white/10" />
+      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#D4A843]/15" />
+
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,8 +32,8 @@ export default function WhoWeAre() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#2D6A4F]/10 mb-6">
-            <Users className="w-7 h-7 text-[#2D6A4F]" />
+          <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-[#1A1A2E]/10 mb-6">
+            <Users className="w-7 h-7 text-[#C05621]" />
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A2E] tracking-tight">
             {c.title}
@@ -45,7 +48,7 @@ export default function WhoWeAre() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-12 max-w-3xl mx-auto"
         >
-          <p className="text-lg leading-relaxed text-[#1A1A2E]/70 text-center">
+          <p className="text-lg leading-relaxed text-[#1A1A2E]/80 text-center">
             {c.text}
           </p>
         </motion.div>

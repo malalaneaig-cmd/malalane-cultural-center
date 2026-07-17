@@ -90,8 +90,11 @@ export default function WhatWeDo() {
   const [active, setActive] = useState('education');
 
   return (
-    <section id="what-we-do" className="py-24 sm:py-32 bg-[#1A1A2E]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="what-we-do" className="py-24 sm:py-32 bg-[#EDAB78] relative overflow-hidden">
+      <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-white/10" />
+      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#D4A843]/15" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,7 +102,7 @@ export default function WhatWeDo() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FDF8F0] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A2E] tracking-tight">
             {c.title}
           </h2>
           <div className="mt-4 w-16 h-1 bg-gradient-to-r from-[#C05621] to-[#D4A843] mx-auto rounded-full" />
@@ -113,7 +116,7 @@ export default function WhatWeDo() {
               className={`flex items-center gap-2 px-4 sm:px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 ${
                 active === id
                   ? 'bg-[#C05621] text-white shadow-lg shadow-[#C05621]/30'
-                  : 'bg-white/5 text-[#FDF8F0]/60 hover:bg-white/10 hover:text-[#FDF8F0]'
+                  : 'bg-white/50 text-[#1A1A2E]/70 hover:bg-white/70 hover:text-[#1A1A2E]'
               }`}
             >
               <Icon className="w-4 h-4" />
@@ -138,12 +141,12 @@ export default function WhatWeDo() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06, duration: 0.4 }}
-                  className="flex gap-4 p-5 rounded-xl bg-white/5 border border-white/5 hover:bg-white/8 transition-colors"
+                  className="flex gap-4 p-5 rounded-xl bg-white/50 border border-white/40 hover:bg-white/65 transition-colors"
                 >
-                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#D4A843]/15 flex items-center justify-center mt-0.5">
-                    <span className="text-[#D4A843] text-sm font-bold">{i + 1}</span>
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-[#C05621]/15 flex items-center justify-center mt-0.5">
+                    <span className="text-[#C05621] text-sm font-bold">{i + 1}</span>
                   </div>
-                  <p className="text-[#FDF8F0]/75 leading-relaxed">{item}</p>
+                  <p className="text-[#1A1A2E]/80 leading-relaxed">{item}</p>
                 </motion.div>
               ))}
             </div>

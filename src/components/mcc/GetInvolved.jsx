@@ -45,8 +45,9 @@ export default function GetInvolved() {
   const c = content[lang];
 
   return (
-    <section id="get-involved" className="py-24 sm:py-32 bg-[#1A1A2E] relative overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#C05621] via-[#D4A843] to-[#2D6A4F]" />
+    <section id="get-involved" className="py-24 sm:py-32 bg-[#EDAB78] relative overflow-hidden">
+      <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-white/10" />
+      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#D4A843]/15" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
@@ -56,12 +57,12 @@ export default function GetInvolved() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FDF8F0] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A2E] tracking-tight">
             {c.title}
           </h2>
-          <p className="mt-3 text-[#D4A843] font-medium text-lg">{c.subtitle}</p>
+          <p className="mt-3 text-[#C05621] font-medium text-lg">{c.subtitle}</p>
           <div className="mt-4 w-16 h-1 bg-gradient-to-r from-[#C05621] to-[#D4A843] mx-auto rounded-full" />
-          <p className="mt-6 text-[#FDF8F0]/60 max-w-2xl mx-auto">{c.description}</p>
+          <p className="mt-6 text-[#1A1A2E]/80 max-w-2xl mx-auto">{c.description}</p>
         </motion.div>
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -72,13 +73,13 @@ export default function GetInvolved() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white/5 border border-white/5 rounded-2xl p-6 hover:bg-white/10 transition-all duration-300 group"
+              className="bg-white/50 border border-white/40 rounded-2xl p-6 hover:bg-white/65 transition-all duration-300 group"
             >
               <div className="w-12 h-12 rounded-xl bg-[#C05621]/15 flex items-center justify-center mb-4 group-hover:bg-[#C05621]/25 transition-colors">
                 <Icon className="w-6 h-6 text-[#C05621]" />
               </div>
-              <h3 className="text-lg font-semibold text-[#FDF8F0]">{title}</h3>
-              <p className="mt-2 text-sm text-[#FDF8F0]/50 leading-relaxed">{desc}</p>
+              <h3 className="text-lg font-semibold text-[#1A1A2E]">{title}</h3>
+              <p className="mt-2 text-sm text-[#1A1A2E]/70 leading-relaxed">{desc}</p>
             </motion.div>
           ))}
         </div>
@@ -90,22 +91,22 @@ export default function GetInvolved() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mt-16 max-w-xl mx-auto"
         >
-          <h3 className="text-2xl font-bold text-[#FDF8F0] text-center mb-8">{c.formTitle}</h3>
-          <div className="space-y-4">
+          <h3 className="text-2xl font-bold text-[#1A1A2E] text-center mb-8">{c.formTitle}</h3>
+          <div className="space-y-4 bg-white/50 border border-white/40 rounded-2xl p-8">
             <input
               type="text"
               placeholder={c.namePlaceholder}
-              className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-[#FDF8F0] placeholder:text-white focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all"
+              className="w-full px-5 py-3.5 rounded-xl bg-white border border-[#1A1A2E]/10 text-[#1A1A2E] placeholder:text-[#1A1A2E]/40 focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all"
             />
             <input
               type="email"
               placeholder={c.emailPlaceholder}
-              className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-[#FDF8F0] placeholder:text-white focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all"
+              className="w-full px-5 py-3.5 rounded-xl bg-white border border-[#1A1A2E]/10 text-[#1A1A2E] placeholder:text-[#1A1A2E]/40 focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all"
             />
             <textarea
               placeholder={c.messagePlaceholder}
               rows={4}
-              className="w-full px-5 py-3.5 rounded-xl bg-white/5 border border-white/10 text-[#FDF8F0] placeholder:text-white focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all resize-none"
+              className="w-full px-5 py-3.5 rounded-xl bg-white border border-[#1A1A2E]/10 text-[#1A1A2E] placeholder:text-[#1A1A2E]/40 focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all resize-none"
             />
             <button className="w-full py-4 bg-[#C05621] hover:bg-[#A04A1C] text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-[#C05621]/30 hover:shadow-xl">
               {c.button}

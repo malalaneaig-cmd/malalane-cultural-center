@@ -36,8 +36,11 @@ export default function DonateSection() {
   const [selected, setSelected] = React.useState(null);
 
   return (
-    <section id="donate" className="py-24 sm:py-32 bg-gradient-to-br from-[#FDF8F0] to-[#F5EDE0]">
-      <div className="max-w-4xl mx-auto px-6">
+    <section id="donate" className="py-24 sm:py-32 bg-[#D2BC9A] relative overflow-hidden">
+      <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-white/15" />
+      <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-[#C05621]/10" />
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -51,8 +54,8 @@ export default function DonateSection() {
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A2E] tracking-tight">
             {c.title}
           </h2>
-          <p className="mt-3 text-[#D4A843] font-medium text-lg">{c.subtitle}</p>
-          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-[#C05621] to-[#D4A843] mx-auto rounded-full" />
+          <p className="mt-3 text-[#8B6914] font-medium text-lg">{c.subtitle}</p>
+          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-[#C05621] to-[#8B6914] mx-auto rounded-full" />
           <p className="mt-6 text-[#1A1A2E]/70 max-w-2xl mx-auto leading-relaxed">
             {c.description}
           </p>

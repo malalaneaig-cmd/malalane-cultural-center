@@ -88,8 +88,11 @@ export default function MediaSection() {
   const c = content[lang];
 
   return (
-    <section id="media" className="py-24 sm:py-32 bg-[#FDF8F0]">
-      <div className="max-w-6xl mx-auto px-6">
+    <section id="media" className="py-24 sm:py-32 bg-[#3A8FA8] relative overflow-hidden">
+      <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/10" />
+      <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-[#D4A843]/10" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -97,11 +100,11 @@ export default function MediaSection() {
           transition={{ duration: 0.8 }}
           className="text-center"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#1A1A2E] tracking-tight">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FDF8F0] tracking-tight">
             {c.title}
           </h2>
-          <p className="mt-3 text-[#1A1A2E]/50 text-lg">{c.subtitle}</p>
-          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-[#C05621] to-[#D4A843] mx-auto rounded-full" />
+          <p className="mt-3 text-[#FDF8F0]/80 text-lg">{c.subtitle}</p>
+          <div className="mt-4 w-16 h-1 bg-gradient-to-r from-[#D4A843] to-[#FDF8F0] mx-auto rounded-full" />
         </motion.div>
 
         <div className="mt-14 grid sm:grid-cols-3 gap-6">
@@ -123,7 +126,7 @@ export default function MediaSection() {
           ))}
         </div>
 
-        <p className="mt-8 text-center text-[#1A1A2E]/50 max-w-xl mx-auto">{c.comingDesc}</p>
+        <p className="mt-8 text-center text-[#FDF8F0]/75 max-w-xl mx-auto">{c.comingDesc}</p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -132,7 +135,7 @@ export default function MediaSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-14 text-center"
         >
-          <p className="text-sm font-semibold uppercase tracking-wider text-[#1A1A2E]/40 mb-6">{c.followUs}</p>
+          <p className="text-sm font-semibold uppercase tracking-wider text-[#FDF8F0]/60 mb-6">{c.followUs}</p>
           <div className="flex justify-center gap-4">
             {socialLinks.map((social) => (
               <a
