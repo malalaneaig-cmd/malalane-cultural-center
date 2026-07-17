@@ -1,14 +1,45 @@
 import React from 'react';
 import { useLang } from './LanguageContext';
 
+const content = {
+  en: {
+    contact: 'Contact',
+    privacy: 'Privacy Policy',
+    terms: 'Terms of Service',
+    rights: 'All rights reserved.',
+    navLabel: 'Footer navigation',
+  },
+  pt: {
+    contact: 'Contacto',
+    privacy: 'Política de Privacidade',
+    terms: 'Termos de Serviço',
+    rights: 'Todos os direitos reservados.',
+    navLabel: 'Navegação do rodapé',
+  },
+};
+
+const links = [
+  { key: 'contact', href: '#get-involved', scroll: true },
+  { key: 'privacy', href: '/privacy.html' },
+  { key: 'terms', href: '/terms.html' },
+];
+
 export default function Footer() {
   const { lang } = useLang();
+  const c = content[lang];
+
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const linkClass =
+    'text-[#FDF8F0]/85 hover:text-[#FDF8F0] text-sm font-medium transition-colors duration-200';
 
   return (
-    <footer className="bg-[#3A8FA8] py-12 border-t border-white/10">
+    <footer className="bg-[#3A8FA8] py-6 sm:py-8 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <div className="flex flex-col items-start">
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5 lg:gap-10">
+          <div className="flex flex-col items-start shrink-0">
             <div className="flex items-center gap-3">
               <div className="mcc-footer-badge w-10 h-10 shrink-0 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-sm">MCC</span>
@@ -21,10 +52,33 @@ export default function Footer() {
               {lang === 'en' ? 'Mozambique • Portugal • Canada' : 'Moçambique • Portugal • Canadá'}
             </p>
           </div>
-          <p className="text-[#FDF8F0]/60 text-xs">
-            © {new Date().getFullYear()} Malalane Cultural Center.{' '}
-            {lang === 'en' ? 'All rights reserved.' : 'Todos os direitos reservados.'}
-          </p>
+
+          <div className="flex flex-col items-start gap-2 lg:ml-auto">
+            <nav
+              aria-label={c.navLabel}
+              className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 sm:gap-x-8 sm:gap-y-2"
+            >
+              {links.map(({ key, href, scroll }) =>
+                scroll ? (
+                  <button
+                    key={key}
+                    type="button"
+                    onClick={() => scrollTo('get-involved')}
+                    className={`${linkClass} text-left`}
+                  >
+                    {c[key]}
+                  </button>
+                ) : (
+                  <a key={key} href={href} className={linkClass}>
+                    {c[key]}
+                  </a>
+                )
+              )}
+            </nav>
+            <p className="text-[#FDF8F0]/60 text-xs leading-tight">
+              © {new Date().getFullYear()} Malalane Cultural Center. {c.rights}
+            </p>
+          </div>
         </div>
       </div>
     </footer>
