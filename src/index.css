@@ -11,3 +11,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+@layer components {
+  .mcc-footer-badge {
+    background-color: #c05621;
+    background-image: linear-gradient(to bottom right, #c05621, #d4a843);
+  }
+}

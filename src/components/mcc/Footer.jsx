@@ -7,15 +7,17 @@ export default function Footer() {
   return (
     <footer className="bg-[#3A8FA8] py-12 border-t border-white/10">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div className="flex flex-col">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="flex flex-col items-start">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-[#C05621] to-[#D4A843] flex items-center justify-center flex-shrink-0">
+              <div className="mcc-footer-badge w-10 h-10 shrink-0 rounded-full flex items-center justify-center">
                 <span className="text-white font-bold text-sm">MCC</span>
               </div>
-              <p className="text-[#FDF8F0] font-semibold text-sm leading-tight">Malalane Cultural Center</p>
+              <p className="text-[#FDF8F0] font-semibold text-sm leading-tight">
+                Malalane Cultural Center
+              </p>
             </div>
-            <p className="text-[#FDF8F0]/70 text-xs text-center -mt-2.5">
+            <p className="text-[#FDF8F0]/70 text-xs leading-tight -mt-2.5 pl-[64px]">
               {lang === 'en' ? 'Mozambique • Portugal • Canada' : 'Moçambique • Portugal • Canadá'}
             </p>
           </div>
