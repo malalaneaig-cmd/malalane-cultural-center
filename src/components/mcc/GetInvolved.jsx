@@ -151,8 +151,8 @@ export default function GetInvolved() {
 
   return (
     <section id="get-involved" className="py-24 sm:py-32 bg-[#EDAB78] relative overflow-hidden">
-      <div className="absolute -top-32 -left-32 w-80 h-80 rounded-full bg-white/10" />
-      <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#D4A843]/15" />
+      <div className="pointer-events-none absolute -top-32 -left-32 w-80 h-80 rounded-full bg-white/10" />
+      <div className="pointer-events-none absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#D4A843]/15" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
@@ -170,17 +170,14 @@ export default function GetInvolved() {
           <p className="mt-6 text-[#1A1A2E]/80 max-w-2xl mx-auto">{c.description}</p>
         </motion.div>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="relative z-20 mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {c.cards.map(({ icon: Icon, title, desc, messagePrefill }, i) => (
-            <motion.button
-              key={i}
+            <button
+              key={title}
               type="button"
               onClick={() => handleCardClick(i, messagePrefill)}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className={`text-left w-full bg-white/50 border rounded-2xl p-6 cursor-pointer transition-all duration-300 group hover:bg-white/70 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#C05621]/40 ${
+              aria-label={`${title} — ${c.formTitle}`}
+              className={`text-left w-full bg-white/50 border rounded-2xl p-6 cursor-pointer transition-all duration-300 group hover:bg-white/70 hover:shadow-md hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-[#C05621]/40 ${
                 activeCard === i
                   ? 'border-[#C05621] bg-white/70 shadow-md ring-2 ring-[#C05621]/20'
                   : 'border-white/40'
@@ -191,18 +188,16 @@ export default function GetInvolved() {
               </div>
               <h3 className="text-lg font-semibold text-[#1A1A2E]">{title}</h3>
               <p className="mt-2 text-sm text-[#1A1A2E]/70 leading-relaxed">{desc}</p>
-            </motion.button>
+            </button>
           ))}
         </div>
 
+        <div ref={formRef} id="get-involved-form" className="relative z-20 mt-16 max-w-xl mx-auto scroll-mt-28">
         <motion.div
-          ref={formRef}
-          id="get-involved-form"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-16 max-w-xl mx-auto scroll-mt-28"
         >
           <h3 className="text-2xl font-bold text-[#1A1A2E] text-center mb-8">{c.formTitle}</h3>
           <form
@@ -258,6 +253,7 @@ export default function GetInvolved() {
             )}
           </form>
         </motion.div>
+        </div>
       </div>
     </section>
   );
