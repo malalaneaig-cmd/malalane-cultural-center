@@ -12,9 +12,14 @@ const content = {
     gallery: 'Photo Gallery',
     videos: 'Videos',
     comingSoon: 'Coming Soon',
-    comingDesc:
-      'We are preparing exciting content to share with you. Stay tuned for updates about our projects and community events.',
+    comingDesc: 'Photo galleries and video stories from our programs are on the way.',
     followUs: 'Follow Us',
+    tags: {
+      programs: 'Programs',
+      education: 'Education',
+      culture: 'Culture',
+      community: 'Community',
+    },
   },
   pt: {
     title: 'Redes Sociais',
@@ -23,10 +28,74 @@ const content = {
     gallery: 'Galeria de Fotos',
     videos: 'Vídeos',
     comingSoon: 'Em Breve',
-    comingDesc:
-      'Estamos a preparar conteúdos entusiasmantes para partilhar consigo. Fique atento às atualizações sobre os nossos projetos e eventos comunitários.',
+    comingDesc: 'Galerias fotográficas e vídeos dos nossos programas estarão disponíveis em breve.',
     followUs: 'Siga-nos',
+    tags: {
+      programs: 'Programas',
+      education: 'Educação',
+      culture: 'Cultura',
+      community: 'Comunidade',
+    },
   },
+};
+
+const newsHighlights = {
+  en: [
+    {
+      tag: 'programs',
+      title: 'Community Learning Centers',
+      excerpt:
+        'MCC is developing learning centers with classrooms and resources for formal education and vocational training in underserved areas of Zavala, Mozambique.',
+      href: '#what-we-do',
+    },
+    {
+      tag: 'education',
+      title: 'Scholarships & Adult Literacy',
+      excerpt:
+        'Scholarship programs and adult literacy workshops are expanding access to quality education and life skills for students and families across the region.',
+      href: '#what-we-do',
+    },
+    {
+      tag: 'culture',
+      title: 'Maputo’s Vibrant Arts Scene',
+      excerpt:
+        'From film cycles at the Cine-Teatro Scala to exhibitions honoring Mozambican artists, Maputo remains a hub for cinema, music, and cultural celebration.',
+    },
+    {
+      tag: 'community',
+      title: 'Festivals That Unite Communities',
+      excerpt:
+        'Across Mozambique, cultural festivals and community gatherings celebrate shared heritage — bringing together elders, youth, and families through music, dance, and tradition.',
+    },
+  ],
+  pt: [
+    {
+      tag: 'programs',
+      title: 'Centros de Aprendizagem Comunitária',
+      excerpt:
+        'O MCC desenvolve centros de aprendizagem com salas de aula e recursos para educação formal e formação profissional em áreas carenciadas de Zavala, Moçambique.',
+      href: '#what-we-do',
+    },
+    {
+      tag: 'education',
+      title: 'Bolsas de Estudo e Alfabetização',
+      excerpt:
+        'Programas de bolsas e oficinas de alfabetização para adultos ampliam o acesso à educação de qualidade e às competências para a vida na região.',
+      href: '#what-we-do',
+    },
+    {
+      tag: 'culture',
+      title: 'Artes e Cinema em Maputo',
+      excerpt:
+        'Desde ciclos de cinema no Cine-Teatro Scala até exposições que homenageiam artistas moçambicanos, Maputo continua a ser um centro de cultura e criatividade.',
+    },
+    {
+      tag: 'community',
+      title: 'Festivais que Unem Comunidades',
+      excerpt:
+        'Em Moçambique, festivais culturais e encontros comunitários celebram a herança partilhada — reunindo idosos, jovens e famílias através da música, dança e tradição.',
+    },
+  ],
 };
 
 const socialLinks = [
@@ -78,7 +147,6 @@ const socialLinks = [
 ];
 
 const placeholderCards = [
-  { icon: Newspaper, key: 'news' },
   { icon: Image, key: 'gallery' },
   { icon: Play, key: 'videos' },
 ];
@@ -86,11 +154,16 @@ const placeholderCards = [
 export default function MediaSection() {
   const { lang } = useLang();
   const c = content[lang];
+  const highlights = newsHighlights[lang];
+
+  const scrollTo = (id) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
     <section id="media" className="py-24 sm:py-32 bg-[#3A8FA8] relative overflow-hidden">
-      <div className="absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/10" />
-      <div className="absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-[#D4A843]/10" />
+      <div className="pointer-events-none absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/10" />
+      <div className="pointer-events-none absolute -bottom-20 -left-20 w-64 h-64 rounded-full bg-[#D4A843]/10" />
 
       <div className="max-w-6xl mx-auto px-6 relative z-10">
         <motion.div
@@ -107,7 +180,59 @@ export default function MediaSection() {
           <div className="mt-4 w-16 h-1 bg-gradient-to-r from-[#D4A843] to-[#FDF8F0] mx-auto rounded-full" />
         </motion.div>
 
-        <div className="mt-14 grid sm:grid-cols-3 gap-6">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="mt-14"
+        >
+          <div className="flex items-center gap-3 mb-6">
+            <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-white/15">
+              <Newspaper className="w-6 h-6 text-[#FDF8F0]" />
+            </div>
+            <h3 className="text-xl sm:text-2xl font-bold text-[#FDF8F0]">{c.news}</h3>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-5">
+            {highlights.map((item, i) => {
+              const inner = (
+                <>
+                  <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#C05621] bg-[#C05621]/10 px-2.5 py-1 rounded-md mb-3">
+                    {c.tags[item.tag]}
+                  </span>
+                  <h4 className="text-lg font-semibold text-[#1A1A2E] leading-snug">{item.title}</h4>
+                  <p className="mt-2 text-sm text-[#1A1A2E]/70 leading-relaxed">{item.excerpt}</p>
+                </>
+              );
+
+              return (
+                <motion.article
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  className="bg-white rounded-2xl p-6 border border-[#1A1A2E]/5 shadow-sm hover:shadow-md transition-shadow text-left h-full"
+                >
+                  {item.href ? (
+                    <button
+                      type="button"
+                      onClick={() => scrollTo(item.href.slice(1))}
+                      className="w-full text-left cursor-pointer"
+                    >
+                      {inner}
+                    </button>
+                  ) : (
+                    inner
+                  )}
+                </motion.article>
+              );
+            })}
+          </div>
+        </motion.div>
+
+        <div className="mt-10 grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
           {placeholderCards.map(({ icon: Icon, key }, i) => (
             <motion.div
               key={key}
@@ -115,7 +240,7 @@ export default function MediaSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-white rounded-2xl p-8 text-center border border-[#1A1A2E]/5 shadow-sm hover:shadow-md transition-shadow"
+              className="bg-white rounded-2xl p-8 text-center border border-[#1A1A2E]/5 shadow-sm"
             >
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#1A1A2E]/5 mb-5">
                 <Icon className="w-8 h-8 text-[#1A1A2E]/30" />
@@ -135,7 +260,9 @@ export default function MediaSection() {
           transition={{ duration: 0.6, delay: 0.3 }}
           className="mt-14 text-center"
         >
-          <p className="text-sm font-semibold uppercase tracking-wider text-[#FDF8F0]/60 mb-6">{c.followUs}</p>
+          <p className="text-sm font-semibold uppercase tracking-wider text-[#FDF8F0]/60 mb-6">
+            {c.followUs}
+          </p>
           <div className="flex justify-center gap-4">
             {socialLinks.map((social) => (
               <a
