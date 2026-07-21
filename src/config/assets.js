@@ -12,6 +12,6 @@ export const site = {
   name: 'Malalane Cultural Center',
   description:
     'Empowering communities through education, culture, and sustainable development in Mozambique, Portugal, and Canada.',
-  email: 'info@malalanecc.org',
+  email: 'info@malalane.org',
   url: 'https://malalane.org',
 };

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLang } from './LanguageContext';
 import { motion } from 'framer-motion';
 import { HandHeart, Users, Megaphone, Briefcase } from 'lucide-react';
+import { site } from '../../config/assets';
+
+const FORM_ENDPOINT =
+  import.meta.env.VITE_CONTACT_FORM_ENDPOINT ||
+  `https://formsubmit.co/ajax/${encodeURIComponent(site.email)}`;
 
 const content = {
   en: {
@@ -20,6 +25,9 @@ const content = {
     emailPlaceholder: 'Your Email',
     messagePlaceholder: 'How would you like to get involved?',
     button: 'Send Message',
+    sending: 'Sending…',
+    success: 'Thank you! Your message has been sent. We will get back to you soon.',
+    error: 'Something went wrong. Please try again or email us at info@malalane.org.',
   },
   pt: {
     title: 'Como Participar',
@@ -37,12 +45,58 @@ const content = {
     emailPlaceholder: 'O Seu E-mail',
     messagePlaceholder: 'Como gostaria de participar?',
     button: 'Enviar Mensagem',
+    sending: 'A enviar…',
+    success: 'Obrigado! A sua mensagem foi enviada. Entraremos em contacto em breve.',
+    error: 'Ocorreu um erro. Tente novamente ou envie e-mail para info@malalane.org.',
   },
 };
 
 export default function GetInvolved() {
   const { lang } = useLang();
   const c = content[lang];
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [status, setStatus] = useState('idle');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    if (status !== 'idle') setStatus('idle');
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('sending');
+
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
+          _subject: `New message from ${formData.name} — Malalane Cultural Center`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
+
+      if (response.ok) {
+        setFormData({ name: '', email: '', message: '' });
+        setStatus('success');
+      } else {
+        setStatus('error');
+      }
+    } catch {
+      setStatus('error');
+    }
+  };
+
+  const inputClass =
+    'w-full px-5 py-3.5 rounded-xl bg-white border border-[#1A1A2E]/10 text-[#1A1A2E] placeholder:text-[#1A1A2E]/40 focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all';
 
   return (
     <section id="get-involved" className="py-24 sm:py-32 bg-[#EDAB78] relative overflow-hidden">
@@ -92,26 +146,57 @@ export default function GetInvolved() {
           className="mt-16 max-w-xl mx-auto"
         >
           <h3 className="text-2xl font-bold text-[#1A1A2E] text-center mb-8">{c.formTitle}</h3>
-          <div className="space-y-4 bg-white/50 border border-white/40 rounded-2xl p-8">
+          <form
+            onSubmit={handleSubmit}
+            className="space-y-4 bg-white/50 border border-white/40 rounded-2xl p-8"
+          >
             <input
               type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
               placeholder={c.namePlaceholder}
-              className="w-full px-5 py-3.5 rounded-xl bg-white border border-[#1A1A2E]/10 text-[#1A1A2E] placeholder:text-[#1A1A2E]/40 focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all"
+              required
+              autoComplete="name"
+              className={inputClass}
             />
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
               placeholder={c.emailPlaceholder}
-              className="w-full px-5 py-3.5 rounded-xl bg-white border border-[#1A1A2E]/10 text-[#1A1A2E] placeholder:text-[#1A1A2E]/40 focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all"
+              required
+              autoComplete="email"
+              className={inputClass}
             />
             <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
               placeholder={c.messagePlaceholder}
               rows={4}
-              className="w-full px-5 py-3.5 rounded-xl bg-white border border-[#1A1A2E]/10 text-[#1A1A2E] placeholder:text-[#1A1A2E]/40 focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all resize-none"
+              required
+              className={`${inputClass} resize-none`}
             />
-            <button className="w-full py-4 bg-[#C05621] hover:bg-[#A04A1C] text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-[#C05621]/30 hover:shadow-xl">
-              {c.button}
+            <button
+              type="submit"
+              disabled={status === 'sending'}
+              className="w-full py-4 bg-[#C05621] hover:bg-[#A04A1C] disabled:opacity-70 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-[#C05621]/30 hover:shadow-xl"
+            >
+              {status === 'sending' ? c.sending : c.button}
             </button>
-          </div>
+            {status === 'success' && (
+              <p className="text-sm text-[#1A1A2E] bg-white/70 border border-[#C05621]/20 rounded-xl px-4 py-3 text-center">
+                {c.success}
+              </p>
+            )}
+            {status === 'error' && (
+              <p className="text-sm text-[#1A1A2E] bg-white/70 border border-red-300 rounded-xl px-4 py-3 text-center">
+                {c.error}
+              </p>
+            )}
+          </form>
         </motion.div>
       </div>
     </section>
