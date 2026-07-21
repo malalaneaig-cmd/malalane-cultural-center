@@ -46,14 +46,12 @@ const newsHighlights = {
       title: 'Community Learning Centers',
       excerpt:
         'MCC is developing learning centers with classrooms and resources for formal education and vocational training in underserved areas of Zavala, Mozambique.',
-      href: '#what-we-do',
     },
     {
       tag: 'education',
       title: 'Scholarships & Adult Literacy',
       excerpt:
         'Scholarship programs and adult literacy workshops are expanding access to quality education and life skills for students and families across the region.',
-      href: '#what-we-do',
     },
     {
       tag: 'culture',
@@ -74,14 +72,12 @@ const newsHighlights = {
       title: 'Centros de Aprendizagem Comunitária',
       excerpt:
         'O MCC desenvolve centros de aprendizagem com salas de aula e recursos para educação formal e formação profissional em áreas carenciadas de Zavala, Moçambique.',
-      href: '#what-we-do',
     },
     {
       tag: 'education',
       title: 'Bolsas de Estudo e Alfabetização',
       excerpt:
         'Programas de bolsas e oficinas de alfabetização para adultos ampliam o acesso à educação de qualidade e às competências para a vida na região.',
-      href: '#what-we-do',
     },
     {
       tag: 'culture',
@@ -156,10 +152,6 @@ export default function MediaSection() {
   const c = content[lang];
   const highlights = newsHighlights[lang];
 
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <section id="media" className="py-24 sm:py-32 bg-[#3A8FA8] relative overflow-hidden">
       <div className="pointer-events-none absolute -top-40 -right-40 w-96 h-96 rounded-full bg-white/10" />
@@ -195,40 +187,22 @@ export default function MediaSection() {
           </div>
 
           <div className="grid sm:grid-cols-2 gap-5">
-            {highlights.map((item, i) => {
-              const inner = (
-                <>
-                  <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#C05621] bg-[#C05621]/10 px-2.5 py-1 rounded-md mb-3">
-                    {c.tags[item.tag]}
-                  </span>
-                  <h4 className="text-lg font-semibold text-[#1A1A2E] leading-snug">{item.title}</h4>
-                  <p className="mt-2 text-sm text-[#1A1A2E]/70 leading-relaxed">{item.excerpt}</p>
-                </>
-              );
-
-              return (
-                <motion.article
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  className="bg-white rounded-2xl p-6 border border-[#1A1A2E]/5 shadow-sm hover:shadow-md transition-shadow text-left h-full"
-                >
-                  {item.href ? (
-                    <button
-                      type="button"
-                      onClick={() => scrollTo(item.href.slice(1))}
-                      className="w-full text-left cursor-pointer"
-                    >
-                      {inner}
-                    </button>
-                  ) : (
-                    inner
-                  )}
-                </motion.article>
-              );
-            })}
+            {highlights.map((item, i) => (
+              <motion.article
+                key={item.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="bg-white rounded-2xl p-6 border border-[#1A1A2E]/5 shadow-sm text-left h-full"
+              >
+                <span className="inline-block text-xs font-semibold uppercase tracking-wider text-[#C05621] bg-[#C05621]/10 px-2.5 py-1 rounded-md mb-3">
+                  {c.tags[item.tag]}
+                </span>
+                <h4 className="text-lg font-semibold text-[#1A1A2E] leading-snug">{item.title}</h4>
+                <p className="mt-2 text-sm text-[#1A1A2E]/70 leading-relaxed">{item.excerpt}</p>
+              </motion.article>
+            ))}
           </div>
         </motion.div>
 
