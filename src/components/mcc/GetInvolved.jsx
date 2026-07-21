@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useLang } from './LanguageContext';
 import { motion } from 'framer-motion';
 import { HandHeart, Users, Megaphone, Briefcase } from 'lucide-react';
@@ -15,10 +15,30 @@ const content = {
     description:
       'There are many ways to support our mission. Whether you volunteer your time, partner with us, or help spread the word — every action counts.',
     cards: [
-      { icon: HandHeart, title: 'Volunteer', desc: 'Give your time and skills to help our community programs and events.' },
-      { icon: Briefcase, title: 'Partner With Us', desc: 'Collaborate with MCC as a corporate or institutional partner to amplify our impact.' },
-      { icon: Megaphone, title: 'Spread the Word', desc: 'Share our mission on social media and help us reach more people.' },
-      { icon: Users, title: 'Join Our Team', desc: 'We are always looking for passionate individuals to join our team.' },
+      {
+        icon: HandHeart,
+        title: 'Volunteer',
+        desc: 'Give your time and skills to help our community programs and events.',
+        messagePrefill: "I'd like to volunteer with Malalane Cultural Center.",
+      },
+      {
+        icon: Briefcase,
+        title: 'Partner With Us',
+        desc: 'Collaborate with MCC as a corporate or institutional partner to amplify our impact.',
+        messagePrefill: "I'm interested in partnering with Malalane Cultural Center.",
+      },
+      {
+        icon: Megaphone,
+        title: 'Spread the Word',
+        desc: 'Share our mission on social media and help us reach more people.',
+        messagePrefill: "I'd like to help spread the word about MCC's mission.",
+      },
+      {
+        icon: Users,
+        title: 'Join Our Team',
+        desc: 'We are always looking for passionate individuals to join our team.',
+        messagePrefill: "I'm interested in joining the Malalane Cultural Center team.",
+      },
     ],
     formTitle: 'Stay Connected',
     namePlaceholder: 'Your Name',
@@ -35,10 +55,30 @@ const content = {
     description:
       'Existem muitas formas de apoiar a nossa missão. Quer seja como voluntário, parceiro ou ajudando a divulgar — cada ação conta.',
     cards: [
-      { icon: HandHeart, title: 'Voluntariado', desc: 'Dedique o seu tempo e competências para ajudar os nossos programas comunitários e eventos.' },
-      { icon: Briefcase, title: 'Parcerias', desc: 'Colabore com o MCC como parceiro corporativo ou institucional para ampliar o nosso impacto.' },
-      { icon: Megaphone, title: 'Divulgue', desc: 'Partilhe a nossa missão nas redes sociais e ajude-nos a alcançar mais pessoas.' },
-      { icon: Users, title: 'Junte-se à Equipa', desc: 'Estamos sempre à procura de pessoas apaixonadas para se juntarem à nossa equipa.' },
+      {
+        icon: HandHeart,
+        title: 'Voluntariado',
+        desc: 'Dedique o seu tempo e competências para ajudar os nossos programas comunitários e eventos.',
+        messagePrefill: 'Gostaria de ser voluntário/a no Centro Cultural Malalane.',
+      },
+      {
+        icon: Briefcase,
+        title: 'Parcerias',
+        desc: 'Colabore com o MCC como parceiro corporativo ou institucional para ampliar o nosso impacto.',
+        messagePrefill: 'Tenho interesse em estabelecer uma parceria com o MCC.',
+      },
+      {
+        icon: Megaphone,
+        title: 'Divulgue',
+        desc: 'Partilhe a nossa missão nas redes sociais e ajude-nos a alcançar mais pessoas.',
+        messagePrefill: 'Gostaria de ajudar a divulgar a missão do MCC.',
+      },
+      {
+        icon: Users,
+        title: 'Junte-se à Equipa',
+        desc: 'Estamos sempre à procura de pessoas apaixonadas para se juntarem à nossa equipa.',
+        messagePrefill: 'Tenho interesse em juntar-me à equipa do Centro Cultural Malalane.',
+      },
     ],
     formTitle: 'Mantenha-se Ligado',
     namePlaceholder: 'O Seu Nome',
@@ -56,6 +96,17 @@ export default function GetInvolved() {
   const c = content[lang];
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [status, setStatus] = useState('idle');
+  const [activeCard, setActiveCard] = useState(null);
+  const formRef = useRef(null);
+  const messageRef = useRef(null);
+
+  const handleCardClick = (index, messagePrefill) => {
+    setFormData((prev) => ({ ...prev, message: messagePrefill }));
+    setActiveCard(index);
+    if (status !== 'idle') setStatus('idle');
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    window.setTimeout(() => messageRef.current?.focus(), 450);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -120,30 +171,38 @@ export default function GetInvolved() {
         </motion.div>
 
         <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {c.cards.map(({ icon: Icon, title, desc }, i) => (
-            <motion.div
+          {c.cards.map(({ icon: Icon, title, desc, messagePrefill }, i) => (
+            <motion.button
               key={i}
+              type="button"
+              onClick={() => handleCardClick(i, messagePrefill)}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white/50 border border-white/40 rounded-2xl p-6 hover:bg-white/65 transition-all duration-300 group"
+              className={`text-left w-full bg-white/50 border rounded-2xl p-6 cursor-pointer transition-all duration-300 group hover:bg-white/70 hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-[#C05621]/40 ${
+                activeCard === i
+                  ? 'border-[#C05621] bg-white/70 shadow-md ring-2 ring-[#C05621]/20'
+                  : 'border-white/40'
+              }`}
             >
               <div className="w-12 h-12 rounded-xl bg-[#C05621]/15 flex items-center justify-center mb-4 group-hover:bg-[#C05621]/25 transition-colors">
                 <Icon className="w-6 h-6 text-[#C05621]" />
               </div>
               <h3 className="text-lg font-semibold text-[#1A1A2E]">{title}</h3>
               <p className="mt-2 text-sm text-[#1A1A2E]/70 leading-relaxed">{desc}</p>
-            </motion.div>
+            </motion.button>
           ))}
         </div>
 
         <motion.div
+          ref={formRef}
+          id="get-involved-form"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-16 max-w-xl mx-auto"
+          className="mt-16 max-w-xl mx-auto scroll-mt-28"
         >
           <h3 className="text-2xl font-bold text-[#1A1A2E] text-center mb-8">{c.formTitle}</h3>
           <form
@@ -171,6 +230,7 @@ export default function GetInvolved() {
               className={inputClass}
             />
             <textarea
+              ref={messageRef}
               name="message"
               value={formData.message}
               onChange={handleChange}
