@@ -98,15 +98,35 @@ const videoItems = {
   en: [
     {
       src: '/videos/nyandayeyo-initiative.mp4',
-      title: 'Nyandayeyo Initiative',
+      title: 'MCC initiatives - Support for IDAI victims',
       description: 'A community initiative highlight from our programs in Mozambique.',
+    },
+    {
+      src: '/videos/mcc-community-initiatives.mp4',
+      title: 'MCC Initiatives - Providing water to our Communities.',
+      description: 'Highlights from Malalane Cultural Center community programs and outreach.',
+    },
+    {
+      src: '/videos/mcc-celebrating-heritage.mp4',
+      title: 'MCC Initiatives — Celebrating Our Heritage',
+      description: 'Malalane Cultural Center celebrates community heritage through culture, tradition, and shared history.',
     },
   ],
   pt: [
     {
       src: '/videos/nyandayeyo-initiative.mp4',
-      title: 'Iniciativa Nyandayeyo',
+      title: 'MCC iniciativas - Apoio às vítimas do IDAI',
       description: 'Um destaque de iniciativa comunitária dos nossos programas em Moçambique.',
+    },
+    {
+      src: '/videos/mcc-community-initiatives.mp4',
+      title: 'MCC Iniciativas - Fornecimento de água às nossas comunidades.',
+      description: 'Destaques dos programas comunitários e de outreach do Centro Cultural Malalane.',
+    },
+    {
+      src: '/videos/mcc-celebrating-heritage.mp4',
+      title: 'MCC Iniciativas — Celebrando a Nossa Herança',
+      description: 'O Centro Cultural Malalane celebra a herança comunitária através da cultura, tradição e história partilhada.',
     },
   ],
 };
