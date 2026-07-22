@@ -12,7 +12,7 @@ const content = {
     gallery: 'Photo Gallery',
     videos: 'Videos',
     comingSoon: 'Coming Soon',
-    comingDesc: 'Photo galleries and video stories from our programs are on the way.',
+    comingDesc: 'Photo galleries from our programs are on the way.',
     followUs: 'Follow Us',
     tags: {
       programs: 'Programs',
@@ -28,7 +28,7 @@ const content = {
     gallery: 'Galeria de Fotos',
     videos: 'Vídeos',
     comingSoon: 'Em Breve',
-    comingDesc: 'Galerias fotográficas e vídeos dos nossos programas estarão disponíveis em breve.',
+    comingDesc: 'Galerias fotográficas dos nossos programas estarão disponíveis em breve.',
     followUs: 'Siga-nos',
     tags: {
       programs: 'Programas',
@@ -94,6 +94,23 @@ const newsHighlights = {
   ],
 };
 
+const videoItems = {
+  en: [
+    {
+      src: '/videos/nyandayeyo-initiative.mpeg',
+      title: 'Nyandayeyo Initiative',
+      description: 'A community initiative highlight from our programs in Mozambique.',
+    },
+  ],
+  pt: [
+    {
+      src: '/videos/nyandayeyo-initiative.mpeg',
+      title: 'Iniciativa Nyandayeyo',
+      description: 'Um destaque de iniciativa comunitária dos nossos programas em Moçambique.',
+    },
+  ],
+};
+
 const socialLinks = [
   {
     name: 'X (Twitter)',
@@ -142,15 +159,12 @@ const socialLinks = [
   },
 ];
 
-const placeholderCards = [
-  { icon: Image, key: 'gallery' },
-  { icon: Play, key: 'videos' },
-];
-
 export default function MediaSection() {
   const { lang } = useLang();
   const c = content[lang];
   const highlights = newsHighlights[lang];
+  const videos = videoItems[lang];
+  const activeSocialLinks = socialLinks.filter((social) => social.href?.startsWith('http'));
 
   return (
     <section id="media" className="py-24 sm:py-32 bg-[#3A8FA8] relative overflow-hidden">
@@ -206,52 +220,86 @@ export default function MediaSection() {
           </div>
         </motion.div>
 
-        <div className="mt-10 grid sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
-          {placeholderCards.map(({ icon: Icon, key }, i) => (
-            <motion.div
-              key={key}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-white rounded-2xl p-8 text-center border border-[#1A1A2E]/5 shadow-sm"
-            >
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#1A1A2E]/5 mb-5">
-                <Icon className="w-8 h-8 text-[#1A1A2E]/30" />
+        <div className="mt-10 grid sm:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="bg-white rounded-2xl p-8 text-center border border-[#1A1A2E]/5 shadow-sm"
+          >
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#1A1A2E]/5 mb-5">
+              <Image className="w-8 h-8 text-[#1A1A2E]/30" />
+            </div>
+            <h3 className="text-lg font-semibold text-[#1A1A2E]">{c.gallery}</h3>
+            <p className="mt-2 text-sm text-[#1A1A2E]/40">{c.comingSoon}</p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="bg-white rounded-2xl p-6 border border-[#1A1A2E]/5 shadow-sm"
+          >
+            <div className="flex items-center gap-3 mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#1A1A2E]/5">
+                <Play className="w-6 h-6 text-[#C05621]" />
               </div>
-              <h3 className="text-lg font-semibold text-[#1A1A2E]">{c[key]}</h3>
-              <p className="mt-2 text-sm text-[#1A1A2E]/40">{c.comingSoon}</p>
-            </motion.div>
-          ))}
+              <h3 className="text-lg font-semibold text-[#1A1A2E]">{c.videos}</h3>
+            </div>
+
+            <div className="space-y-5">
+              {videos.map((video) => (
+                <article key={video.src}>
+                  <div className="overflow-hidden rounded-xl bg-[#1A1A2E]/5">
+                    <video
+                      className="w-full aspect-video object-cover bg-black"
+                      controls
+                      preload="metadata"
+                      playsInline
+                    >
+                      <source src={video.src} type="video/mpeg" />
+                      Your browser does not support embedded video.
+                    </video>
+                  </div>
+                  <h4 className="mt-3 text-base font-semibold text-[#1A1A2E]">{video.title}</h4>
+                  <p className="mt-1 text-sm text-[#1A1A2E]/70 leading-relaxed">{video.description}</p>
+                </article>
+              ))}
+            </div>
+          </motion.div>
         </div>
 
         <p className="mt-8 text-center text-[#FDF8F0]/75 max-w-xl mx-auto">{c.comingDesc}</p>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-14 text-center"
-        >
-          <p className="text-sm font-semibold uppercase tracking-wider text-[#FDF8F0]/60 mb-6">
-            {c.followUs}
-          </p>
-          <div className="flex justify-center gap-4">
-            {socialLinks.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-xl bg-[#1A1A2E] text-white flex items-center justify-center hover:bg-[#C05621] transition-colors duration-300 hover:scale-110 transform"
-                title={social.name}
-              >
-                <social.icon />
-              </a>
-            ))}
-          </div>
-        </motion.div>
+        {activeSocialLinks.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-14 text-center"
+          >
+            <p className="text-sm font-semibold uppercase tracking-wider text-[#FDF8F0]/60 mb-6">
+              {c.followUs}
+            </p>
+            <div className="flex justify-center gap-4">
+              {activeSocialLinks.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-12 h-12 rounded-xl bg-[#1A1A2E] text-white flex items-center justify-center hover:bg-[#C05621] transition-colors duration-300 hover:scale-110 transform"
+                  title={social.name}
+                >
+                  <social.icon />
+                </a>
+              ))}
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );

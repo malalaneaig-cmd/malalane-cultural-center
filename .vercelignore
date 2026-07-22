@@ -1,3 +1,4 @@
 .env
-.env.*
+.env.local
+.env.*.local
 scripts/ftp-deploy.ps1
