@@ -97,14 +97,14 @@ const newsHighlights = {
 const videoItems = {
   en: [
     {
-      src: '/videos/nyandayeyo-initiative.mpeg',
+      src: '/videos/nyandayeyo-initiative.mp4',
       title: 'Nyandayeyo Initiative',
       description: 'A community initiative highlight from our programs in Mozambique.',
     },
   ],
   pt: [
     {
-      src: '/videos/nyandayeyo-initiative.mpeg',
+      src: '/videos/nyandayeyo-initiative.mp4',
       title: 'Iniciativa Nyandayeyo',
       description: 'Um destaque de iniciativa comunitária dos nossos programas em Moçambique.',
     },
@@ -259,7 +259,7 @@ export default function MediaSection() {
                       preload="metadata"
                       playsInline
                     >
-                      <source src={video.src} type="video/mpeg" />
+                      <source src={video.src} type="video/mp4" />
                       Your browser does not support embedded video.
                     </video>
                   </div>
