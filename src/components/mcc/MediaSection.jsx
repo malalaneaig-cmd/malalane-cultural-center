@@ -12,7 +12,7 @@ const content = {
     gallery: 'Photo Gallery',
     videos: 'Videos',
     comingSoon: 'Coming Soon',
-    comingDesc: 'Photo galleries from our programs are on the way.',
+    comingDesc: 'More highlights from our community programs are on the way.',
     followUs: 'Follow Us',
     tags: {
       programs: 'Programs',
@@ -28,7 +28,7 @@ const content = {
     gallery: 'Galeria de Fotos',
     videos: 'Vídeos',
     comingSoon: 'Em Breve',
-    comingDesc: 'Galerias fotográficas dos nossos programas estarão disponíveis em breve.',
+    comingDesc: 'Mais destaques dos nossos programas comunitários estarão disponíveis em breve.',
     followUs: 'Siga-nos',
     tags: {
       programs: 'Programas',
@@ -111,6 +111,11 @@ const videoItems = {
       title: 'MCC Initiatives — Celebrating Our Heritage',
       description: 'Malalane Cultural Center celebrates community heritage through culture, tradition, and shared history.',
     },
+    {
+      youtubeId: '8HtGoEVDsqw',
+      title: 'MCC Initiatives - Building a Community Center',
+      description: 'Follow the progress as Malalane Cultural Center builds a community center for education and outreach.',
+    },
   ],
   pt: [
     {
@@ -127,6 +132,38 @@ const videoItems = {
       src: '/videos/mcc-celebrating-heritage.mp4',
       title: 'MCC Iniciativas — Celebrando a Nossa Herança',
       description: 'O Centro Cultural Malalane celebra a herança comunitária através da cultura, tradição e história partilhada.',
+    },
+    {
+      youtubeId: '8HtGoEVDsqw',
+      title: 'MCC Iniciativas — Construção de um Centro Comunitário',
+      description: 'Acompanhe o progresso da construção de um centro comunitário para educação e outreach do Centro Cultural Malalane.',
+    },
+  ],
+};
+
+const photoItems = {
+  en: [
+    {
+      src: '/photos/mcc-community-center-build.jpeg',
+      title: 'MCC Initiatives - Community Center Build',
+      description: 'Building a community center for education, culture, and outreach in Mozambique.',
+    },
+    {
+      src: '/photos/mcc-conferring-with-elders.jpeg',
+      title: 'MCC Initiatives - Conferring with the Elders',
+      description: 'Engaging community elders in dialogue, guidance, and shared decision-making.',
+    },
+  ],
+  pt: [
+    {
+      src: '/photos/mcc-community-center-build.jpeg',
+      title: 'MCC Iniciativas - Construção do Centro Comunitário',
+      description: 'Construção de um centro comunitário para educação, cultura e outreach em Moçambique.',
+    },
+    {
+      src: '/photos/mcc-conferring-with-elders.jpeg',
+      title: 'MCC Iniciativas - Consulta com os Anciãos',
+      description: 'Diálogo com anciãos comunitários para orientação e decisões partilhadas.',
     },
   ],
 };
@@ -184,6 +221,7 @@ export default function MediaSection() {
   const c = content[lang];
   const highlights = newsHighlights[lang];
   const videos = videoItems[lang];
+  const photos = photoItems[lang];
   const activeSocialLinks = socialLinks.filter((social) => social.href?.startsWith('http'));
 
   return (
@@ -246,13 +284,31 @@ export default function MediaSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="bg-white rounded-2xl p-8 text-center border border-[#1A1A2E]/5 shadow-sm"
+            className="bg-white rounded-2xl p-6 border border-[#1A1A2E]/5 shadow-sm"
           >
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-[#1A1A2E]/5 mb-5">
-              <Image className="w-8 h-8 text-[#1A1A2E]/30" />
+            <div className="flex items-center gap-3 mb-4">
+              <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-[#1A1A2E]/5">
+                <Image className="w-6 h-6 text-[#C05621]" />
+              </div>
+              <h3 className="text-lg font-semibold text-[#1A1A2E]">{c.gallery}</h3>
             </div>
-            <h3 className="text-lg font-semibold text-[#1A1A2E]">{c.gallery}</h3>
-            <p className="mt-2 text-sm text-[#1A1A2E]/40">{c.comingSoon}</p>
+
+            <div className="space-y-5">
+              {photos.map((photo) => (
+                <article key={photo.src}>
+                  <div className="overflow-hidden rounded-xl bg-[#1A1A2E]/5">
+                    <img
+                      src={photo.src}
+                      alt={photo.title}
+                      className="w-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                  <h4 className="mt-3 text-base font-semibold text-[#1A1A2E]">{photo.title}</h4>
+                  <p className="mt-1 text-sm text-[#1A1A2E]/70 leading-relaxed">{photo.description}</p>
+                </article>
+              ))}
+            </div>
           </motion.div>
 
           <motion.div
@@ -271,17 +327,28 @@ export default function MediaSection() {
 
             <div className="space-y-5">
               {videos.map((video) => (
-                <article key={video.src}>
+                <article key={video.youtubeId || video.src}>
                   <div className="overflow-hidden rounded-xl bg-[#1A1A2E]/5">
-                    <video
-                      className="w-full aspect-video object-cover bg-black"
-                      controls
-                      preload="metadata"
-                      playsInline
-                    >
-                      <source src={video.src} type="video/mp4" />
-                      Your browser does not support embedded video.
-                    </video>
+                    {video.youtubeId ? (
+                      <iframe
+                        className="w-full aspect-video bg-black"
+                        src={`https://www.youtube.com/embed/${video.youtubeId}`}
+                        title={video.title}
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerPolicy="strict-origin-when-cross-origin"
+                        allowFullScreen
+                      />
+                    ) : (
+                      <video
+                        className="w-full aspect-video object-cover bg-black"
+                        controls
+                        preload="metadata"
+                        playsInline
+                      >
+                        <source src={video.src} type="video/mp4" />
+                        Your browser does not support embedded video.
+                      </video>
+                    )}
                   </div>
                   <h4 className="mt-3 text-base font-semibold text-[#1A1A2E]">{video.title}</h4>
                   <p className="mt-1 text-sm text-[#1A1A2E]/70 leading-relaxed">{video.description}</p>
