@@ -153,6 +153,11 @@ const photoItems = {
       title: 'MCC Initiatives - Conferring with the Elders',
       description: 'Engaging community elders in dialogue, guidance, and shared decision-making.',
     },
+    {
+      src: '/photos/mcc-preparing-community-center-doors.jpeg',
+      title: 'MCC Initiatives - Preparing for Community Center Doors',
+      description: 'Preparing and installing doors as the community center build moves forward.',
+    },
   ],
   pt: [
     {
@@ -164,6 +169,11 @@ const photoItems = {
       src: '/photos/mcc-conferring-with-elders.jpeg',
       title: 'MCC Iniciativas - Consulta com os Anciãos',
       description: 'Diálogo com anciãos comunitários para orientação e decisões partilhadas.',
+    },
+    {
+      src: '/photos/mcc-preparing-community-center-doors.jpeg',
+      title: 'MCC Iniciativas - Preparação das Portas do Centro Comunitário',
+      description: 'Preparação e instalação das portas à medida que a construção do centro comunitário avança.',
     },
   ],
 };
