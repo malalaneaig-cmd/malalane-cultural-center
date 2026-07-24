@@ -7,3 +7,13 @@ dist
 .env.*.local
 ~$*
 .vercel
+
+# Local IDE/tool config (may contain personal MCP tokens/keys)
+.cursor/
+
+# Raw working documents and unprocessed media (not part of the built site).
+# Keep these in Drive/SharePoint or an asset bucket, not in git history.
+CONTENT FOR MCC WEBSITE/
+MCC TEMPORARILY GINE OFFSITE/
+PUBLIC PHOTOS/
+PUBLIC VIDEOS/
