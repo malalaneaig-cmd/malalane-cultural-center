@@ -12,12 +12,12 @@ Location on Page: KM 333, Estrada Nacional Numero 1, Zavala, Inhambane, Mozambiq
 | MCC Initiatives-Preping for Community Center Doors.jpeg | Photo | `PUBLIC PHOTOS/` | Ready to post |
 | MCC Initiatives - Community-Center-Build.jpeg | Photo | `PUBLIC PHOTOS/` | Ready to post |
 | MCC-COMMUNITY INITIATIVES.mp4 | Video | `PUBLIC VIDEOS/` | Ready to post (native upload) |
-| NHANDAYEYO INITIATIVE.mpeg | Video | `PUBLIC PHOTOS/` and `PUBLIC VIDEOS/` (duplicate) | `.mpeg` is not supported by LinkedIn's native uploader — convert to `.mp4` before posting |
+| NHANDAYEYO INITIATIVE.mp4 | Video | `PUBLIC VIDEOS/` | Ready to post — remuxed from the original `.mpeg` (same H.264/AAC streams, no quality loss) |
 | MCC INITIATIVES- CELEBRATING OUR HERITAGE.htm | Video (broken) | `PUBLIC VIDEOS/` | **Not usable** — this is a saved Google Drive viewer webpage, not an actual video file. Re-export/download the real `.mp4` from its source before this can be posted. |
 
 ## Posting cadence
 
-1–2 posts per week for the first month, native LinkedIn video/photo uploads (not links), each with a single clear call to action back to malalane.org. This first batch covers 4 posts using assets that are ready today; posts 5–6 are queued pending the two video conversions above.
+1–2 posts per week for the first month, native LinkedIn video/photo uploads (not links), each with a single clear call to action back to malalane.org. This first batch covers 5 posts using assets that are ready today; post 6 remains queued pending the "Celebrating Our Heritage" video re-export.
 
 ---
 
@@ -88,9 +88,9 @@ Location on Page: KM 333, Estrada Nacional Numero 1, Zavala, Inhambane, Mozambiq
 
 ---
 
-### Post 6 — Video: "Nhandayeyo Initiative" (queued — needs `.mp4` conversion first)
+### Post 6 — Video: "Nhandayeyo Initiative"
 **Timing:** Day 24–25
-**Asset:** `NHANDAYEYO INITIATIVE.mpeg` → convert to `.mp4` before uploading
+**Asset:** `NHANDAYEYO INITIATIVE.mp4` (ready)
 **Caption:**
 > Spotlight on the Nhandayeyo Initiative — one of the community programs Malalane Cultural Center supports in Zavala.
 >
@@ -101,9 +101,9 @@ Location on Page: KM 333, Estrada Nacional Numero 1, Zavala, Inhambane, Mozambiq
 
 ---
 
-## Outstanding items before posting 5 and 6
-1. Convert `NHANDAYEYO INITIATIVE.mpeg` to `.mp4` (LinkedIn's native uploader does not accept `.mpeg`).
-2. Locate and export the actual `.mp4`/`.mov` file behind `MCC INITIATIVES- CELEBRATING OUR HERITAGE.htm` — the current file is just a saved Google Drive viewer page, not a real video.
+## Outstanding items
+1. ~~Convert `NHANDAYEYO INITIATIVE.mpeg` to `.mp4`.~~ Done — remuxed losslessly to `PUBLIC VIDEOS/NHANDAYEYO INITIATIVE.mp4` (H.264/AAC, 1920x1080, 50.85s).
+2. Locate and export the actual `.mp4`/`.mov` file behind `MCC INITIATIVES- CELEBRATING OUR HERITAGE.htm` — the current file is just a saved Google Drive viewer page, not a real video. This is the only asset still blocking a post (no post number assigned yet).
 3. Confirm the exact focus/description of the "Nhandayeyo Initiative" so Post 6's caption can be filled in accurately (placeholder left above).
 
 ## Posting mechanics reminder
