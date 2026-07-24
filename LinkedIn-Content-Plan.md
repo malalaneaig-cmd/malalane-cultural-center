@@ -13,11 +13,11 @@ Location on Page: KM 333, Estrada Nacional Numero 1, Zavala, Inhambane, Mozambiq
 | MCC Initiatives - Community-Center-Build.jpeg | Photo | `PUBLIC PHOTOS/` | Ready to post |
 | MCC-COMMUNITY INITIATIVES.mp4 | Video | `PUBLIC VIDEOS/` | Ready to post (native upload) |
 | NHANDAYEYO INITIATIVE.mp4 | Video | `PUBLIC VIDEOS/` | Ready to post — remuxed from the original `.mpeg` (same H.264/AAC streams, no quality loss) |
-| MCC INITIATIVES- CELEBRATING OUR HERITAGE.htm | Video (broken) | `PUBLIC VIDEOS/` | **Not usable** — this is a saved Google Drive viewer webpage, not an actual video file. Re-export/download the real `.mp4` from its source before this can be posted. |
+| MCC INITIATIVES- CELEBRATING OUR HERITAGE.mp4 | Video | `PUBLIC VIDEOS/` | Ready to post — original `IMG_4454.MOV` recovered from its Google Drive source and remuxed to `.mp4` (H.264/AAC, 1080x1920 portrait, 53.4s). Raw original kept as `MCC INITIATIVES- CELEBRATING OUR HERITAGE-original.MOV`. |
 
 ## Posting cadence
 
-1–2 posts per week for the first month, native LinkedIn video/photo uploads (not links), each with a single clear call to action back to malalane.org. This first batch covers 5 posts using assets that are ready today; post 6 remains queued pending the "Celebrating Our Heritage" video re-export.
+1–2 posts per week for the first month, native LinkedIn video/photo uploads (not links), each with a single clear call to action back to malalane.org. All 7 assets below are now ready to post — no outstanding format/source issues remain.
 
 ---
 
@@ -101,9 +101,22 @@ Location on Page: KM 333, Estrada Nacional Numero 1, Zavala, Inhambane, Mozambiq
 
 ---
 
+### Post 7 — Video: "Celebrating Our Heritage"
+**Timing:** Day 29–30
+**Asset:** `MCC INITIATIVES- CELEBRATING OUR HERITAGE.mp4` (portrait video — a young musician playing a traditional wooden marimba/mbila)
+**Caption:**
+> Music is one of the ways this community passes its heritage from one generation to the next.
+>
+> This is a glimpse of the traditional instruments and songs that are part of everyday life around Malalane Cultural Center — the kind of living heritage our cultural preservation work is built to protect and celebrate, alongside everything else we do in education, youth empowerment, and community development.
+>
+> malalane.org
+**Hashtags:** #CulturalPreservation #Mozambique #Heritage
+
+---
+
 ## Outstanding items
 1. ~~Convert `NHANDAYEYO INITIATIVE.mpeg` to `.mp4`.~~ Done — remuxed losslessly to `PUBLIC VIDEOS/NHANDAYEYO INITIATIVE.mp4` (H.264/AAC, 1920x1080, 50.85s).
-2. Locate and export the actual `.mp4`/`.mov` file behind `MCC INITIATIVES- CELEBRATING OUR HERITAGE.htm` — the current file is just a saved Google Drive viewer page, not a real video. This is the only asset still blocking a post (no post number assigned yet).
+2. ~~Locate and export the actual video behind `MCC INITIATIVES- CELEBRATING OUR HERITAGE.htm`.~~ Done — recovered `IMG_4454.MOV` from its Google Drive source (public link, no login required) and remuxed to `PUBLIC VIDEOS/MCC INITIATIVES- CELEBRATING OUR HERITAGE.mp4`.
 3. Confirm the exact focus/description of the "Nhandayeyo Initiative" so Post 6's caption can be filled in accurately (placeholder left above).
 
 ## Posting mechanics reminder
