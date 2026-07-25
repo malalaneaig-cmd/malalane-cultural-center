@@ -3,6 +3,7 @@ import { useLang } from './LanguageContext';
 
 const content = {
   en: {
+    name: 'Malalane Cultural Center',
     contact: 'Contact',
     privacy: 'Privacy Policy',
     terms: 'Terms of Use',
@@ -10,6 +11,7 @@ const content = {
     navLabel: 'Footer navigation',
   },
   pt: {
+    name: 'Centro Cultural Malalane',
     contact: 'Contacto',
     privacy: 'Política de Privacidade',
     terms: 'Termos de Utilização',
@@ -41,7 +43,7 @@ export default function Footer() {
                 <span className="text-white font-bold text-sm">MCC</span>
               </div>
               <p className="text-[#FDF8F0] font-semibold text-sm leading-tight">
-                Malalane Cultural Center
+                {c.name}
               </p>
             </div>
             <p className="text-[#FDF8F0]/70 text-xs leading-tight -mt-2.5 pl-[64px]">
@@ -61,7 +63,7 @@ export default function Footer() {
               ))}
             </nav>
             <p className="text-[#FDF8F0]/60 text-xs leading-tight">
-              © {new Date().getFullYear()} Malalane Cultural Center. {c.rights}
+              © {new Date().getFullYear()} {c.name}. {c.rights}
             </p>
           </div>
         </div>

@@ -26,7 +26,9 @@ export default function HeroSection() {
           transition={{ duration: 1, ease: 'easeOut' }}
         >
           <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight leading-tight">
-            <span className="text-[#D4A843]">Malalane Cultural Center</span>
+            <span className="text-[#D4A843]">
+              {lang === 'en' ? 'Malalane Cultural Center' : 'Centro Cultural Malalane'}
+            </span>
           </h1>
           <p className="mt-6 text-sm sm:text-base text-white/90 max-w-3xl mx-auto leading-relaxed sm:whitespace-nowrap">
             {lang === 'en'
