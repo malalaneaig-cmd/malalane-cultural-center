@@ -16,6 +16,7 @@ const content = {
     customPlaceholder: 'Custom amount',
     button: 'Donate Now',
     recurring: 'Make this a monthly donation',
+    recurringSoon: '(coming soon)',
     note: 'All donations are tax-deductible. You will receive a receipt via email.',
     selectAmount: 'Please select or enter a donation amount.',
     setupNote:
@@ -31,6 +32,7 @@ const content = {
     customPlaceholder: 'Valor personalizado',
     button: 'Doar Agora',
     recurring: 'Tornar este um donativo mensal',
+    recurringSoon: '(brevemente)',
     note: 'Todos os donativos são dedutíveis nos impostos. Receberá um recibo por e-mail.',
     selectAmount: 'Selecione ou introduza um valor de donativo.',
     setupNote:
@@ -174,14 +176,17 @@ export default function DonateSection() {
             }}
             className="w-full px-5 py-3.5 rounded-xl border border-[#1A1A2E]/10 focus:outline-none focus:border-[#C05621] focus:ring-2 focus:ring-[#C05621]/20 transition-all text-[#1A1A2E] placeholder:text-[#1A1A2E]/30"
           />
-          <label className="flex items-center gap-3 mt-5 cursor-pointer">
+          <label className="flex items-center gap-3 mt-5 cursor-not-allowed opacity-50" title={c.recurringSoon}>
             <input
               type="checkbox"
               checked={monthly}
+              disabled
               onChange={(e) => setMonthly(e.target.checked)}
               className="w-4 h-4 rounded border-[#1A1A2E]/20 text-[#C05621] focus:ring-[#C05621]"
             />
-            <span className="text-sm text-[#1A1A2E]/60">{c.recurring}</span>
+            <span className="text-sm text-[#1A1A2E]/60">
+              {c.recurring} <span className="italic">{c.recurringSoon}</span>
+            </span>
           </label>
           {!DONATION_URL && (
             <p className="mt-4 text-sm text-[#1A1A2E]/60 bg-[#D2BC9A]/40 border border-[#1A1A2E]/10 rounded-xl px-4 py-3">

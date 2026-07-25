@@ -17,3 +17,6 @@ CONTENT FOR MCC WEBSITE/
 MCC TEMPORARILY GINE OFFSITE/
 PUBLIC PHOTOS/
 PUBLIC VIDEOS/
+
+# Sensitive credentials — never commit (Stripe 2FA backup codes, etc.)
+STRIPE CODE/
