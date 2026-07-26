@@ -17,9 +17,16 @@ original caption's upright, high-contrast old-style serif -- the original
 is NOT italic, just a delicate serif with tight "ct" letter joins), same
 ink color, centered under the wordmark exactly like the English version.
 
-Output: public/images/logo-pt.png, cropped/padded and resized to match
-the aspect ratio of the existing public/images/logo.png so it drops into
-the Navbar with no layout shift.
+Output: src/assets/images/logo-pt.png (NOT public/) so Vite bundles it
+through the normal asset pipeline and gives it a content-hashed filename
+on every build. That matters here specifically: a raw /public/images/*.png
+keeps the exact same URL forever, so browsers/CDNs (this project caches
+/images/* for 24h, see vercel.json) will happily keep serving a stale
+cached copy after this script's output changes, unless you also bump a
+version/query string by hand. Importing from src/ sidesteps that footgun
+entirely, cropped/padded and resized to match the aspect ratio of the
+existing public/images/logo.png so it drops into the Navbar with no
+layout shift.
 """
 from pathlib import Path
 
@@ -27,7 +34,8 @@ from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "public" / "images" / "logo-instagram.png"
-OUT = ROOT / "public" / "images" / "logo-pt.png"
+OUT = ROOT / "src" / "assets" / "images" / "logo-pt.png"
+OUT.parent.mkdir(parents=True, exist_ok=True)
 
 FONT_DIR = Path(r"C:\Windows\Fonts")
 INK = (92, 62, 62)
