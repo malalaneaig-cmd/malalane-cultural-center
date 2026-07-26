@@ -1,5 +1,6 @@
 export const images = {
   logo: '/images/logo.png',
+  logoPt: '/images/logo-pt.png',
   communityGathering: '/images/community-gathering.png',
   hero: 'https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=80',
   mission: 'https://images.unsplash.com/photo-1761666520005-3ffcf13e74c8?w=800&q=80',

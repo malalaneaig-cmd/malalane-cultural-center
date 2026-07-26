@@ -31,8 +31,8 @@ export default function Navbar() {
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
             <img
-              src={images.logo}
-              alt="Malalane Cultural Center Logo"
+              src={lang === 'en' ? images.logo : images.logoPt}
+              alt={lang === 'en' ? 'Malalane Cultural Center Logo' : 'Centro Cultural Malalane - Logótipo'}
               className="h-12 lg:h-16 w-auto object-contain"
               style={{ mixBlendMode: 'multiply', filter: 'brightness(0.75) contrast(1.8) saturate(1.6)' }}
             />
