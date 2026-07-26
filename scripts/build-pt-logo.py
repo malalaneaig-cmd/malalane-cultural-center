@@ -12,10 +12,12 @@ swapped: "cultural center" -> "centro cultural".
 
 Source: the high-res public/images/logo-instagram.png (1080x1080, white
 background) is used so the icon + wordmark stay crisp; the caption region
-is erased and redrawn in Bell MT (closest available system font to the
+is erased and redrawn in Bell MT Bold (closest available system font to the
 original caption's upright, high-contrast old-style serif -- the original
-is NOT italic, just a delicate serif with tight "ct" letter joins), same
-ink color, centered under the wordmark exactly like the English version.
+is NOT italic, just a delicate serif with tight "ct" letter joins; regular
+weight Bell MT rendered noticeably lighter/thinner than the source caption,
+so Bold is used to match its stroke weight), same ink color, centered under
+the wordmark exactly like the English version.
 
 Output: src/assets/images/logo-pt.png (NOT public/) so Vite bundles it
 through the normal asset pipeline and gives it a content-hashed filename
@@ -70,9 +72,9 @@ def build() -> None:
     max_w = (CAPTION_BOX[2] - CAPTION_BOX[0]) * 1.05
 
     size = 90
-    font = _font("BELL.TTF", size)
+    font = _font("BELLB.TTF", size)
     while size > 20:
-        font = _font("BELL.TTF", size)
+        font = _font("BELLB.TTF", size)
         bbox = draw.textbbox((0, 0), caption, font=font)
         w, h = bbox[2] - bbox[0], bbox[3] - bbox[1]
         if h <= target_h and w <= max_w:
