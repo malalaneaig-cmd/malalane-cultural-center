@@ -232,7 +232,9 @@ export default function MediaSection() {
   const highlights = newsHighlights[lang];
   const videos = videoItems[lang];
   const photos = photoItems[lang];
-  const activeSocialLinks = socialLinks.filter((social) => social.href?.startsWith('http'));
+  const activeSocialLinks = socialLinks.filter(
+    (social) => social.href?.startsWith('http') || social.href?.startsWith('mailto:')
+  );
 
   return (
     <section id="media" className="py-24 sm:py-32 bg-[#3A8FA8] relative overflow-hidden">
