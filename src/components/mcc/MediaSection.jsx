@@ -112,7 +112,7 @@ const videoItems = {
       description: 'Malalane Cultural Center celebrates community heritage through culture, tradition, and shared history.',
     },
     {
-      youtubeId: '8HtGoEVDsqw',
+      src: '/videos/mcc-building-community-center.mp4',
       title: 'MCC Initiatives - Building a Community Center',
       description: 'Follow the progress as Malalane Cultural Center builds a community center for education and outreach.',
     },
@@ -134,7 +134,7 @@ const videoItems = {
       description: 'O Centro Cultural Malalane celebra a herança comunitária através da cultura, tradição e história partilhada.',
     },
     {
-      youtubeId: '8HtGoEVDsqw',
+      src: '/videos/mcc-building-community-center.mp4',
       title: 'MCC Iniciativas — Construção de um Centro Comunitário',
       description: 'Acompanhe o progresso da construção de um centro comunitário para educação e outreach do Centro Cultural Malalane.',
     },
@@ -339,28 +339,17 @@ export default function MediaSection() {
 
             <div className="space-y-5">
               {videos.map((video) => (
-                <article key={video.youtubeId || video.src}>
+                <article key={video.src}>
                   <div className="overflow-hidden rounded-xl bg-[#1A1A2E]/5">
-                    {video.youtubeId ? (
-                      <iframe
-                        className="w-full aspect-video bg-black"
-                        src={`https://www.youtube.com/embed/${video.youtubeId}`}
-                        title={video.title}
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerPolicy="strict-origin-when-cross-origin"
-                        allowFullScreen
-                      />
-                    ) : (
-                      <video
-                        className="w-full aspect-video object-cover bg-black"
-                        controls
-                        preload="metadata"
-                        playsInline
-                      >
-                        <source src={video.src} type="video/mp4" />
-                        Your browser does not support embedded video.
-                      </video>
-                    )}
+                    <video
+                      className="w-full aspect-video object-cover bg-black"
+                      controls
+                      preload="metadata"
+                      playsInline
+                    >
+                      <source src={video.src} type="video/mp4" />
+                      Your browser does not support embedded video.
+                    </video>
                   </div>
                   <h4 className="mt-3 text-base font-semibold text-[#1A1A2E]">{video.title}</h4>
                   <p className="mt-1 text-sm text-[#1A1A2E]/70 leading-relaxed">{video.description}</p>
