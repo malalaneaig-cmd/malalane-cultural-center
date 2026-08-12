@@ -19,5 +19,5 @@ export const site = {
   description:
     'Empowering communities through education, culture, and sustainable development in Mozambique, Portugal, and Canada.',
   email: 'info@malalane.org',
-  url: 'https://malalane.org',
+  url: 'https://www.malalane.org',
 };
