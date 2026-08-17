@@ -116,6 +116,11 @@ const videoItems = {
       title: 'MCC Initiatives - Building a Community Center',
       description: 'Follow the progress as Malalane Cultural Center builds a community center for education and outreach.',
     },
+    {
+      src: '/videos/mcc-youth-cultural-dance.mp4',
+      title: 'MCC Initiatives — Youth Cultural Dance',
+      description: 'Young people in Zavala perform traditional dance as part of our cultural preservation programs.',
+    },
   ],
   pt: [
     {
@@ -137,6 +142,11 @@ const videoItems = {
       src: '/videos/mcc-building-community-center.mp4',
       title: 'MCC Iniciativas — Construção de um Centro Comunitário',
       description: 'Acompanhe o progresso da construção de um centro comunitário para educação e outreach do Centro Cultural Malalane.',
+    },
+    {
+      src: '/videos/mcc-youth-cultural-dance.mp4',
+      title: 'MCC Iniciativas — Dança Cultural Juvenil',
+      description: 'Jovens em Zavala apresentam dança tradicional como parte dos nossos programas de preservação cultural.',
     },
   ],
 };

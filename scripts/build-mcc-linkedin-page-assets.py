@@ -108,14 +108,17 @@ def build_banner() -> None:
     draw = ImageDraw.Draw(banner)
 
     headline_font = _font("segoeuib.ttf", 130)
-    tagline_font = _font("segoeui.ttf", 62)
+    tagline_font = _font("segoeuib.ttf", 62)
 
     headline = "Empowering Communities Through Culture, Education & Sustainable Development"
     tagline = "Mozambique  \u00b7  Portugal  \u00b7  Canada"
 
-    # Fit the headline within the mobile-safe center zone (~79.8% of width)
-    # by shrinking the font until it fits on two lines.
-    safe_w = int(w * 0.80)
+    # Fit the headline within a narrow center zone. LinkedIn's in-app cover
+    # cropper does not actually preserve the full 6:1 upload canvas - it
+    # crops much tighter/squarer than that, so text needs a large safety
+    # margin on both sides to survive aggressive cropping, not just the
+    # nominal ~80% "mobile-safe" zone.
+    safe_w = int(w * 0.50)
     words = headline.split(" ")
 
     def wrap(font):
@@ -150,7 +153,10 @@ def build_banner() -> None:
     gap_headline_tag = int(h * 0.05)
     total_h = block_h + gap_headline_tag + tag_h
 
-    y = (h - total_h) / 2
+    # Top-aligned (not vertically centered) so the text block clears the
+    # bottom-left corner, where LinkedIn overlaps the square Page logo on
+    # top of the banner (same convention as personal profile photos).
+    y = h * 0.14
     for line in lines:
         lw = draw.textbbox((0, 0), line, font=headline_font)[2]
         x = (w - lw) / 2
@@ -164,8 +170,8 @@ def build_banner() -> None:
     tag_w = tag_bbox[2]
     x = (w - tag_w) / 2
     draw.text(
-        (x, y), tagline, font=tagline_font, fill=(255, 240, 214),
-        stroke_width=2, stroke_fill=NAVY,
+        (x, y), tagline, font=tagline_font, fill=NAVY,
+        stroke_width=2, stroke_fill=(255, 255, 255),
     )
 
     out = OUT / "malalane-cultural-center-banner-linkedin.png"
